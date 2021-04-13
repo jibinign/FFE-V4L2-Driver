@@ -37,4 +37,4 @@ V4L2 driver with Frame Feed Emulator
 	
 	c) GStreamer Pipeline
 	
-		$ gst-launch-1.0 v4l2src device=/dev/video1 ! videoconvert ! video/x-raw, width=1280, height=720 ! autovideosink
+		$ gst-launch-1.0 v4l2src device=/dev/video1 ! videoconvert ! autovideosink
