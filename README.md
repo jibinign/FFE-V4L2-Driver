@@ -25,7 +25,7 @@ V4L2 driver with Frame Feed Emulator
 	
 		$ ffplay /dev/video1
 		
-		$ ffplay -framerate 25 /dev/video1
+		$ ffplay -framerate 30 /dev/video1
 		
 		$ ffplay -video_size 1280x720 /dev/video1
 	
@@ -37,4 +37,4 @@ V4L2 driver with Frame Feed Emulator
 	
 	c) GStreamer Pipeline
 	
-		$ gst-launch-1.0 -v v4l2src device=/dev/video1 ! video/x-raw,framerate=30/1,width=1280,height=720 ! xvimagesink
+		$ gst-launch-1.0 v4l2src device=/dev/video1 ! videoconvert ! video/x-raw, width=1280, height=720 ! autovideosink
