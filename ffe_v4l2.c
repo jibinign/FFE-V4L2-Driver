@@ -13,12 +13,16 @@
 #include <media/v4l2-device.h>
 #include <media/videobuf2-vmalloc.h>
 
+
+#define VERSION				"0.1.0"
+
 #define MAX_WIDTH			1920
 #define MAX_HEIGHT			1080
 #define MAX_FPS				1000
 
 MODULE_DESCRIPTION("V4L2 Driver with FFE");
 MODULE_LICENSE("GPL");
+MODULE_VERSION(VERSION);
 
 static void p_release(struct device *dev)
 {
@@ -185,9 +189,9 @@ static void generate_color_pix(struct dev_data *dev, u8 *buf, int colorpos, bool
 
 	v4l2_info(&dev->v4l2_dev, "%s\t", __func__);
 	alpha = dev->alpha;
-	r_y = dev->bars[colorpos][0];			/* R or Y componemt */
-	g_u = dev->bars[colorpos][1];			/* G or U componemt */
-	b_v = dev->bars[colorpos][2];			/* B or V componemt */
+	r_y = dev->bars[colorpos][0];			/* R or Y component */
+	g_u = dev->bars[colorpos][1];			/* G or U component */
+	b_v = dev->bars[colorpos][2];			/* B or V component */
 
 	for (color = 0; color < dev->pixelsize; color++) {
 		p = buf + color;
@@ -996,6 +1000,7 @@ static int __init ffe_v4l2_init(void)
 		pr_err("%s: platform driver, %s registration failed..\n", __func__, p_driver.driver.name);
 		platform_device_unregister(&p_device);
 	}
+	pr_info("FFE-V4L2-Driver version %s loaded successfully..\n", VERSION);
 	return ret;
 }
 
