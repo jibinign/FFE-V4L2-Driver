@@ -1,6 +1,7 @@
 # FFE-V4L2-Driver
 V4L2 driver with Frame Feed Emulator
 
+Working Platform:- Ubuntu 18.04.5 LTS (4.15.0-141-generic)
 
 1. Build the project using make.
 
